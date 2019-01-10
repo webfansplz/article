@@ -5,9 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>前端路由</title>
+    <style>
+      #page {
+        width: 100%;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 20px;
+        color: #666;
+      }
+      .btn-list {
+        padding-left: 20px;
+        list-style: none;
+        display: flex;
+        text-align: center;
+      }
+      .btn-list li {
+        cursor: pointer;
+        flex: 1;
+        height: 40px;
+        line-height: 40px;
+        margin-right: 20px;
+        font-size: 18px;
+        color: #fff;
+        background-color: #d4a23e;
+        border-radius: 5px;
+      }
+      .replace-btn {
+        cursor: pointer;
+        margin: 10px auto 0;
+        display: block;
+        width: 150px;
+        height: 40px;
+        line-height: 40px;
+        background-color: #f33;
+        font-size: 18px;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+      }
+    </style>
   </head>
   <body>
     <div id="page"></div>
-    <button id="btn">点击</button>
+    <ul class="btn-list">
+      <li data-url="/">push Index</li>
+      <li data-url="/hash">push Hash</li>
+      <li data-url="/history">push History</li>
+      <li data-url="1">前进</li>
+      <li data-url="-1">后退</li>
+    </ul>
+    <span class="replace-btn">replace Index</span>
   </body>
 </html>

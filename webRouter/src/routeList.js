@@ -5,14 +5,14 @@ export const ROUTELIST = [
     component: 'This is index page'
   },
   {
-    path: '/hello',
-    name: 'hello',
-    component: 'This is hello page'
+    path: '/hash',
+    name: 'hash',
+    component: 'This is hash page'
   },
   {
-    path: '/user',
-    name: 'user',
-    component: 'This is user page'
+    path: '/history',
+    name: 'history',
+    component: 'This is history page'
   },
   {
     path: '*',
