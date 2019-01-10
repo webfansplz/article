@@ -8,7 +8,7 @@ export class HistoryRouter extends BaseRouter {
     });
   }
   handler() {
-    this._render(this.getState());
+    this.render(this.getState());
   }
   getState() {
     const path = window.location.pathname;

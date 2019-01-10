@@ -8,7 +8,7 @@ export class HashRouter extends BaseRouter {
     });
   }
   handler() {
-    this._render(this.getState());
+    this.render(this.getState());
   }
   getState() {
     const hash = window.location.hash;
