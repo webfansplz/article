@@ -1,0 +1,14 @@
+{
+  "name": "babelplugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "babel": "node ./index.js"
+  },
+  "author": "webfansplz",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.2.2"
+  }
+}
