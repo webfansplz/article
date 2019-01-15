@@ -1,0 +1,14 @@
+{
+  "name": "ajpromise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "promises-aplus-tests ./test.js"
+  },
+  "author": "webfansplz",
+  "license": "MIT",
+  "devDependencies": {
+    "promises-aplus-tests": "^2.1.2"
+  }
+}
