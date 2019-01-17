@@ -147,43 +147,41 @@ function resolvePromise(promise2, x, resolve, reject) {
   }
 }
 
-AjPromise.all = function (promises) {      
+AjPromise.all = function(promises) {
   return new AjPromise((resolve, reject) => {
     let done = gen(promises.length, resolve);
     promises.forEach((promise, index) => {
-      promise.then((value) => {
-        done(index, value)
-      }, reject)
-    })
-  })
-}
+      promise.then(value => {
+        done(index, value);
+      }, reject);
+    });
+  });
+};
 
 function gen(length, resolve) {
   let count = 0;
   let values = [];
-  return function (i, value) {
+  return function(i, value) {
     values[i] = value;
     if (++count === length) {
       resolve(values);
     }
-  }
+  };
 }
 
-
-AjPromise.race = function (promises) {    
+AjPromise.race = function(promises) {
   return new AjPromise((resolve, reject) => {
     for (var i = 0; i < promises.length; i++) {
-      promises[i].then(resolve, reject)
+      promises[i].then(resolve, reject);
     }
-  })
-}
-AjPromise.resolve = function (value) {
-  return new AjPromise((resolve, reject) => resolve(value);
-}
-AjPromise.reject = function (reason) {
+  });
+};
+AjPromise.resolve = function(value) {
+  return new AjPromise((resolve, reject) => resolve(value));
+};
+AjPromise.reject = function(reason) {
   return new AjPromise((resolve, reject) => reject(reason));
-}
-
+};
 
 AjPromise.deferred = function() {
   let defer = {};
