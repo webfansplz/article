@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "promises-aplus-tests ./test.js"
+    "test": "promises-aplus-tests ./ajPromise.js"
   },
   "author": "webfansplz",
   "license": "MIT",
