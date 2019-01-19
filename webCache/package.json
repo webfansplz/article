@@ -1,0 +1,23 @@
+{
+  "name": "webcache",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cache": "nodemon ./index.js"
+  },
+  "author": "webfansplz",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "koa": "^2.6.2",
+    "koa-conditional-get": "^2.0.0",
+    "koa-etag": "^3.0.0",
+    "koa-static": "^5.0.0"
+  },
+  "dependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
