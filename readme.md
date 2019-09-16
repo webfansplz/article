@@ -27,3 +27,5 @@
 [[实践系列]call,apply,bind 走一个](https://github.com/webfansplz/article/issues/5)
 
 [[实践系列]模拟实现 new 操作符](https://github.com/webfansplz/article/issues/6)
+
+[[实践系列]不要肆无忌惮地在你的项目中使用 ES78910 了～](https://github.com/webfansplz/article/issues/14)
