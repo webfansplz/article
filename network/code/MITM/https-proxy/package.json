@@ -1,0 +1,17 @@
+{
+  "name": "https-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "createCA": "node createCA.js",
+    "service": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-forge": "^0.9.1",
+    "shelljs": "^0.8.3"
+  }
+}
