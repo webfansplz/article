@@ -1,0 +1,17 @@
+{
+  "name": "MITM",
+  "version": "1.0.0",
+  "description": "",
+  "main": "http-mitm-proxy.js",
+  "dependencies": {
+    "http-proxy": "^1.18.0",
+    "through2": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "http": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
