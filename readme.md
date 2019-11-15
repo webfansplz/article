@@ -10,6 +10,8 @@
 
 [HTTPS 连接到底发生了什么](https://github.com/webfansplz/article/blob/master/network/https.md)
 
+[HTTP/2 带来了什么](https://github.com/webfansplz/article/blob/master/network/http2.md)
+
 ## Node.js 进阶系列
 
 [[Node.js 进阶系列] Koa 源码分析之 EventEmitter](https://github.com/webfansplz/article/issues/7)
