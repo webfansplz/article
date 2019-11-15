@@ -1,9 +1,3 @@
-<!-- https://github.com/wuchangming/https-mitm-proxy-handbook -->
-
-<!-- https://github.com/alibaba/anyproxy -->
-
-<!-- https://www.trendmicro.com/vinfo/us/security/news/cybercrime-and-digital-threats/infosec-guide-defending-against-man-in-the-middle-attacks -->
-
 ## what's MITM
 
 ![MITM](./images/mitm.png)

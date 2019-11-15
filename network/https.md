@@ -1,9 +1,3 @@
-<!-- https://juejin.im/post/592d23630ce46300579882b4 -->
-<!-- https://zhuanlan.zhihu.com/p/43789231 -->
-<!-- https://juejin.im/post/5a2fd1216fb9a045204c315e -->
-<!-- https://juejin.im/post/5caab0bff265da24cf311d5b -->
-<!-- http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html -->
-
 ## 什么是 https?
 
 ![HTTPS](./images/https.png)

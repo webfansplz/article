@@ -1,7 +1,3 @@
-<!-- https://zhuanlan.zhihu.com/p/37379780 -->
-<!-- https://www.zhihu.com/question/32255109 -->
-<!-- http://blog.chinaunix.net/uid-20778955-id-539945.html -->
-
 ## TCP 流量控制 (Flow Control)
 
 ### 什么是流量控制?
