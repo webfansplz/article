@@ -30,6 +30,8 @@
 
 ## 实践系列
 
+[✨ null-cli 来啦 🎉 一行命令提高你的效率 🚀 ](https://github.com/webfansplz/article/issues/18)
+
 [[实践系列]前端路由](https://github.com/webfansplz/article/issues/1)
 
 [[实践系列]Babel 原理](https://github.com/webfansplz/article/issues/2)
