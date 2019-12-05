@@ -1,4 +1,4 @@
-import applyMixin from "./mixin.js.js";
+import applyMixin from "./mixin.js";
 let Vue; // bind on install
 export class Store {
   constructor(options = {}) {
