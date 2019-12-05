@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>vllx-install</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{title}}
+    </div>
+  </body>
+  <script type="module">
+    import vllx from "./vllx/index.js";
+    Vue.use(vllx);
+    const store = new vllx.Store({
+      state: {
+        name: "webfansplz",
+        age: 18
+      },
+      mutations: {
+        setState(state) {
+          state.name = "null";
+        }
+      },
+      actions: {
+        async getName({ commit }) {
+          commit("setState");
+        }
+      }
+    });
+    const app = new Vue({
+      el: "#app",
+      store,
+      data() {
+        return {
+          title: "hello vllx"
+        };
+      }
+    });
+    console.log(app.$store);
+  </script>
+</html>
