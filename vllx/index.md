@@ -14,7 +14,7 @@
 
 - Mutation (更改 Vuex state 的唯一方法,同步操作)
 
-- Action ( 异步操作处理方法,提交 mutation 来更改 state,而不是直接变更)
+- Action (异步操作处理方法,提交 mutation 来更改 state,而不是直接变更)
 
 ## vllx 做了哪些基本实现?
 
@@ -48,7 +48,7 @@
 
 [ 4. 为什么说 Vuex getter 相当于 Vue 的 computed ?](https://github.com/webfansplz/article/tree/master/vllx/lesson4)
 
-**demo 使用了 JavaScript modules,需要启动 web 服务器来调试 !**
+**demo 使用了 JavaScript modules,需要启动 web 服务器来调试 !**
 
 ## ❤️ 结语
 
