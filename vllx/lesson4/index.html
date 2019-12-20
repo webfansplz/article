@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>vllx</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{greeting}}</p>
+      <p>{{name}}</p>
+      <p>{{age}}</p>
+      <button @click="changeName">change</button>
+    </div>
+  </body>
+  <script>
+    function sleep(count) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, count);
+      });
+    }
+  </script>
+  <script type="module">
+    import vllx from "./vllx/index.js";
+    Vue.use(vllx);
+    const store = new vllx.Store({
+      state: {
+        name: "webfansplz",
+        age: 18
+      },
+      mutations: {
+        setName(state, payload) {
+          state.name = payload;
+        },
+        setAge(state, { value }) {
+          state.age = value;
+        }
+      },
+      actions: {
+        async getName({ commit }) {
+          await sleep(1500);
+          commit("setName", "null-cli");
+          return 20;
+        }
+      },
+      getters: {
+        formatName(state) {
+          return `hello ${state.name}`;
+        }
+      }
+    });
+    new Vue({
+      el: "#app",
+      store,
+      computed: {
+        greeting() {
+          return this.$store.getters.formatName;
+        },
+        name() {
+          return this.$store.state.name;
+        },
+        age() {
+          return this.$store.state.age;
+        }
+      },
+      methods: {
+        changeName() {
+          this.$store.dispatch("getName").then(res => {
+            this.$store.commit({
+              type: "setAge",
+              value: res
+            });
+          });
+        }
+      }
+    });
+  </script>
+</html>
