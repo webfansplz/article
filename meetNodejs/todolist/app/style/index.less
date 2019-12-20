@@ -1,0 +1,32 @@
+.header {
+  width: 100%;
+  height: 150px;
+  line-height: 150px;
+  text-align: center;
+}
+.list {
+  padding: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.empty {
+  width: 100%;
+  height: 300px;
+  line-height: 300px;
+  text-align: center;
+}
+.box-card {
+  flex: 0 0 480px;
+  margin: 10px;
+  &-header {
+    display: flex;
+    align-items: center;
+    span {
+      flex: 1;
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+}

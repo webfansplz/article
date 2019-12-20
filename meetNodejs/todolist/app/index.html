@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hello,Node.js</title>
+    <link rel="stylesheet" href="./style/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <!-- task dialog -->
+      <el-dialog :title="taskTitle" :visible.sync="taskDialog">
+        <el-form :model="form">
+          <el-form-item label="任务名称" label-width="120">
+            <el-input v-model="form.name" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="任务内容" label-width="120">
+            <el-input
+              v-model="form.content"
+              autocomplete="off"
+              type="textarea"
+            ></el-input>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="taskDialog=false">取 消</el-button>
+          <el-button type="primary" @click="taskHandler">确 定</el-button>
+        </div>
+      </el-dialog>
+      <!-- header area -->
+      <header class="header">
+        <el-button type="primary" round @click="taskDialog=true;taskType='add'"
+          >新建任务</el-button
+        >
+      </header>
+      <!-- content area -->
+      <div class="list" v-if="todolist.length">
+        <el-card class="box-card" v-for="(item,index) in todolist" :key="index">
+          <div slot="header" class="box-card-header">
+            <span>{{item.name}}</span>
+            <span classs="edit-area">
+              <el-button
+                type="primary"
+                icon="el-icon-edit"
+                circle
+                @click="edit(item)"
+              ></el-button>
+              <el-button
+                slot="reference"
+                type="danger"
+                icon="el-icon-delete"
+                circle
+                @click="del(item.id)"
+              ></el-button>
+            </span>
+          </div>
+          <div>{{item.content}}</div>
+        </el-card>
+      </div>
+      <div class="empty" v-else>
+        <img src="./images/empty.png" />
+      </div>
+    </div>
+  </body>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./js/index.js"></script>
+</html>
