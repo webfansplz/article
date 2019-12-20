@@ -592,7 +592,7 @@ process.stdin.on('end', () => {
 })
 ```
 
-![process-stdin](https://raw.githubusercontent.com/webfansplz/meet-nodejs/master/process/process-stdin.gif)
+![process-stdin](https://raw.githubusercontent.com/webfansplz/article/master/meetNodejs/process/process-stdin.gif)
 
 #### 标准输出流：process.stdout
 
@@ -911,7 +911,7 @@ rl.question('你如何看待 null-cli ？', answer => {
 })
 ```
 
-![readline](https://raw.githubusercontent.com/webfansplz/meet-nodejs/master/readline/readline.gif)
+![readline](https://raw.githubusercontent.com/webfansplz/article/master/meetNodejs/readline/readline.gif)
 
 很多有趣的 CLI 工具是基于 readline 造的哦,有兴趣的同学也可以尝试~
 

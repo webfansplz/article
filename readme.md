@@ -20,6 +20,32 @@
 
 [📦 5 个有趣的 Node.js 库,带你走进 彩色 Node.js 世界 🎉](https://github.com/webfansplz/article/issues/19)
 
+[[Node.js 入门系列] 事件触发器 events 模块](https://github.com/webfansplz/article/issues/22)
+
+[[Node.js 入门系列] 本地路径 path 模块](https://github.com/webfansplz/article/issues/23)
+
+[[Node.js 入门系列] 文件操作系统 fs 模块](https://github.com/webfansplz/article/issues/24)
+
+[[Node.js 入门系列] 全局对象 process 进程](https://github.com/webfansplz/article/issues/25)
+
+[[Node.js 入门系列] http 模块 ](https://github.com/webfansplz/article/issues/26)
+
+[[Node.js 入门系列] 统一资源定位符 url 模块](https://github.com/webfansplz/article/issues/27)
+
+[[Node.js 入门系列] 压缩 zlib 模块 ](https://github.com/webfansplz/article/issues/28)
+
+[[Node.js 入门系列] 流 stream 模块](https://github.com/webfansplz/article/issues/29)
+
+[[Node.js 入门系列] 逐行读取 readline 模块](https://github.com/webfansplz/article/issues/30)
+
+[[Node.js 入门系列] 查询字符串 querystring 模块](https://github.com/webfansplz/article/issues/31)
+
+[[Node.js 入门系列] module 模块](https://github.com/webfansplz/article/issues/32)
+
+[[Node.js 入门系列] 缓冲器 Buffer 模块](https://github.com/webfansplz/article/issues/33)
+
+[[Node.js 入门系列] 域名服务器 dns 模块](https://github.com/webfansplz/article/issues/34)
+
 [[Node.js 进阶系列] Koa 源码分析之 EventEmitter](https://github.com/webfansplz/article/issues/7)
 
 [[Node.js 进阶系列] Koa 源码分析之 Http 模块](https://github.com/webfansplz/article/issues/8)
