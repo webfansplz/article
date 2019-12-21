@@ -1,6 +1,48 @@
 # meet-nodejs
 
-本文通过了解 Node.js 13 个 基础核心模块 和 一个基于 原生 Node.js 的 TodoList 实践 ,带你上手 Node.js
+## 前言
+
+### 什么是 Node.js 呢 ?
+
+JS 是脚本语言,脚本语言都需要一个解析器才能运行。对于写在 HTML 页面里的 JS,浏览器充当了解析器的角色。而对于需要独立运行的 JS,NodeJS 就是一个解析器。
+
+解析器需要运行引擎才能对 JavaScript 进行解析,Node.js 采用了 V8 引擎,Google 开源的 JavaScript 引擎。
+
+所以,Node.js 就是一个基于 Chrome V8 引擎的 JavaScript 运行环境。
+
+Node.js 事件驱动机制 + 异步 IO + 高性能 V8 引擎 ,也让它成为编写高性能 Web 服务一个非常好的选择。
+
+### Node.js 能做什么呢 ?
+
+马上 2020 年了,距离 2009 年 Node.js 开源以来,已经 10 个年头了。
+
+这么长时间的迭代,Node.js 生态圈已经非常成熟,有了很多优秀的实践和轮子,比如 express,koa 等 web 开发框架。
+
+Node.js 无疑也带动了前端生态的发展,比如前端工程化领域。
+
+说 Node.js 能做什么,不如说说我用 Node.js 做了什么吧。
+
+工作中:
+
+- 基于 express 做了一个活动页生成工具
+
+- 基于 koa + sequelize 做了一个监控系统平台
+
+- 用 Node.js 撸了一些自动化脚本,优化重复性劳作
+
+工作之余:
+
+[null-cli 来啦 , 一行命令提高你的效率 ](https://juejin.im/post/5de46d6a6fb9a071817bfc8d)
+
+[5 个有趣的 Node.js 库,带你走进 彩色 Node.js 世界](https://juejin.im/post/5de4b6caf265da05fc66d9af)
+
+[nodejs + docker + github pages 定制自己的 「今日头条」](https://juejin.im/post/5dd657276fb9a05a597e0865)
+
+### 说了这么多废话,我要干嘛呢～
+
+如果你最近刚好想要了解,学习 Node.js,那希望这篇文章能帮到你～
+
+本文通过了解 Node.js 13 个 基础核心模块 和 一个基于 原生 Node.js 的 TodoList 实践 ,带你上手 Node.js ！
 
 ## 13 个基础核心模块
 
@@ -30,9 +72,11 @@
 
 [ 13. 域名服务器 dns 模块](#13)
 
-Node.js 内置模块远不止 13 个,入门阶段我们先了解一些常用的基础核心模块.
+Node.js 内置模块远不止 13 个,入门阶段我们了解一些常用的基础核心模块,就可以上手 实践啦～
 
-## TodoList 做了什么?
+如果不想看通篇长文,我在[github 博客](https://github.com/webfansplz/article) 将 13 个模块拆分成了 13 个小节,方便阅读,每个模块的 demo 代码也能在博客中找到～
+
+## TodoList 实现了什么?
 
 为了对 Node.js 核心模块进一步加深理解,这个 demo 采用原生 api 实现,脱离 express,koa 等一些 web 框架和库 。
 
@@ -43,6 +87,45 @@ Node.js 内置模块远不止 13 个,入门阶段我们先了解一些常用的�
 - 后端路由 Router 简易实现
 
 - Node.js 核心模块方法实践
+
+实现了一个简单的任务管理,前端采用的是 vue + element-ui ,
+
+```code
+TodoList
+└───app             // 前端代码
+│   │   ...
+└───controllers     // 控制器
+│   │   list.js     // api 逻辑实现
+└───router
+│   │   index.js    // 注册路由
+│   │   router.js   // 路由实现
+└───utils           // 工具类
+    │   index.js
+|   data.json       // 数据存放
+│   index.js        // 工程入口
+```
+
+实现没有借助任何库,不用安装任何依赖
+
+```js
+node index.js
+```
+
+就可以启动服务,自己想要开发或者调试的话,这里推荐使用[nodemon](https://github.com/remy/nodemon),它实现了热更新,可以自动重启.
+
+```js
+npm install -g nodemon
+
+nodemon
+#or
+nodemon index.js
+```
+
+[TodoList 代码地址](https://github.com/webfansplz/article/tree/master/meetNodejs/todolist)
+
+实现效果如下:
+
+![todolist](https://raw.githubusercontent.com/webfansplz/article/master/meetNodejs/todolist/todolist.gif)
 
 <h2 id="1"> 1. 事件触发器 events 模块</h2>
 
@@ -1393,3 +1476,13 @@ dns.lookupService('127.0.0.1', 80, function(err, hostname, service) {
   console.log('主机名：%s，服务类型：%s', hostname, service) // 主机名：localhost，服务类型：http
 })
 ```
+
+## 参考
+
+[Node.js 中文网](http://nodejs.cn/)
+
+[IT 笔录](https://itbilu.com/)
+
+## 后记
+
+> 如果你和我一样喜欢前端,也爱动手折腾,欢迎关注[我的博客](https://github.com/webfansplz/article)一起玩耍啊～ ❤️
