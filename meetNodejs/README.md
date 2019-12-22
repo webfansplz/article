@@ -1485,4 +1485,14 @@ dns.lookupService('127.0.0.1', 80, function(err, hostname, service) {
 
 ## 后记
 
-> 如果你和我一样喜欢前端,也爱动手折腾,欢迎关注[我的博客](https://github.com/webfansplz/article)一起玩耍啊～ ❤️
+> 如果你和我一样喜欢前端,也爱动手折腾,欢迎关注我一起玩耍啊～ ❤️
+
+### 博客
+
+[我的博客](https://github.com/webfansplz/article)
+
+### 公众号
+
+前端时刻
+
+![公众号](https://raw.githubusercontent.com/webfansplz/article/master/qrcode.jpg)
