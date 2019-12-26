@@ -68,7 +68,7 @@
 
 [撸一个简版 vuex](https://github.com/webfansplz/article/issues/20)
 
-[12 道 vue 高频原理面试题,看看你会几个?
+[12 道 vue 高频原理面试题,你能答出几道?
 ](https://github.com/webfansplz/article/issues/35)
 
 ## 网络篇
