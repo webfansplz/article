@@ -68,6 +68,9 @@
 
 [撸一个简版 vuex](https://github.com/webfansplz/article/issues/20)
 
+[12 道 vue 高频原理面试题,看看你会几个?
+](https://github.com/webfansplz/article/issues/35)
+
 ## 网络篇
 
 [TCP 的流量控制和拥塞控制](https://github.com/webfansplz/article/blob/master/network/tcp%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6.md)
