@@ -87,4 +87,4 @@
 
 ## 公众号
 
-![qrcode](./qrcode.jpg)
+![qrcode](./qrcode.gif)
