@@ -33,7 +33,10 @@ function getDataTask() {
           }
           const total = body.d.total
           !totalSize && (totalSize = Math.ceil(total / 20))
-          const result = list.filter(({ category, viewsCount }) => category.id === webCategoryId && viewsCount >= 2000)
+          const result = list.filter(
+            ({ category, viewsCount, originalUrl }) =>
+              category.id === webCategoryId && originalUrl && viewsCount >= 2000
+          )
           articles.push(...result)
           page < totalSize ? task(++page, totalSize, articles) : resolve(articles)
         }
@@ -46,7 +49,7 @@ function getDataTask() {
 function renderTask(res) {
   const content = res.reduce(
     (a, { user, collectionCount, title, originalUrl }) =>
-      a + `「 🌟 ${collectionCount} 」 [${title} By <font color="#f33">${user.username}</font> ](${originalUrl})  \n`,
+      a + `「 🌟 ${collectionCount} 」[ 👼 ${user.username} ] [ ${title} ](${originalUrl})\n\n`,
     ''
   )
   fs.writeFileSync('./articles.md', content)
