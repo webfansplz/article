@@ -1,0 +1,13 @@
+{
+  "name": "interview-article",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
