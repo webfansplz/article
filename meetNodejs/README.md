@@ -1495,4 +1495,4 @@ dns.lookupService('127.0.0.1', 80, function(err, hostname, service) {
 
 前端时刻
 
-![公众号](https://raw.githubusercontent.com/webfansplz/article/master/qrcode.jpg)
+![前端时刻](https://raw.githubusercontent.com/webfansplz/article/master/qrcode.jpg)

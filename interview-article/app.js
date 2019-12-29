@@ -47,9 +47,10 @@ function getDataTask() {
 }
 
 function renderTask(res) {
+  const formatTitle = title => title.replace(/\[|\]/g, word => `\\${word}`)
   const content = res.reduce(
     (a, { user, collectionCount, title, originalUrl }) =>
-      a + `「 🌟 ${collectionCount} 」[ 👼 ${user.username} ] [ ${title} ](${originalUrl})\n\n`,
+      a + `「 🌟 ${collectionCount} 」[ 👼 ${user.username} ] [${formatTitle(title)}](${originalUrl})\n\n`,
     ''
   )
   fs.writeFileSync('./articles.md', content)
