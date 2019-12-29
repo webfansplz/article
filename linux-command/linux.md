@@ -2,8 +2,6 @@
 
 > 一个前端好好切图不好吗?为什么要学 linux 呢? 嗯,真香 !
 
-![rm_rf](./images/rm_rf)
-
 ## 1. ls 命令 : 显示目录内容列表
 
 Linux ls 命令用于显示指定工作目录下之内容（列出目前工作目录所含之文件及子目录)。
@@ -18,7 +16,7 @@ ls [-alrtAFR] [name...]
 - -A 同 -a ,但不列出 "." (目前目录) 及 ".." (父目录)
 - -R 若目录下有文件,则以下之文件亦皆依序列出
 
-![ls](./images/ls-example.png)
+![ls](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/ls-example.png)
 
 ## 2. rm 命令 : 删除文件/目录
 
@@ -34,9 +32,9 @@ rm [options] [name...]
 - -r 或-R：递归处理，将指定目录下的所有文件与子目录一并处理
 - -f：强制删除文件或目录
 
-![rm](./images/rm-example.png)
+![rm](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/rm-example.png)
 
-![rm](./images/rm.png)
+![rm](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/rm.png)
 
 ## 3. tail 命令 : 查看文件内容
 
@@ -52,7 +50,7 @@ tail [options][file]
 
 - -f 循环读取
 
-![tail](./images/tail-example.png)
+![tail](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/tail-example.png)
 
 ## 4. mv 命令 : 文件移动/改名
 
@@ -76,7 +74,7 @@ mv [options] source... directory
 | mv 目录名 目录名 | 目标目录已存在,将源目录移动到目标目录.目标目录不存在则改名 |
 | mv 目录名 文件名 |                            出错                            |
 
-![mv](./images/mv-example.png)
+![mv](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/mv-example.png)
 
 ## 5. touch 命令 : 新建文件
 
@@ -88,7 +86,7 @@ ls -l 可以显示档案的时间记录。
 touch [file]
 ```
 
-![touch](./images/touch-example.png)
+![touch](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/touch-example.png)
 
 ## 6. which 命令 : 查找文件
 
@@ -98,7 +96,7 @@ which 指令会在环境变量\$PATH 设置的目录里查找符合条件的文�
 which [file...]
 ```
 
-![which](./images/which-example.png)
+![which](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/which-example.png)
 
 ## 7. cp 命令 : 复制文件/目录
 
@@ -115,7 +113,7 @@ cp [options] source... directory
 - -f：覆盖已经存在的目标文件而不给出提示。
 - -r：若给出的源文件是一个目录文件,此时将复制该目录下所有的子目录和文件。
 
-![cp](./images/cp-example.png)
+![cp](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/cp-example.png)
 
 ## 8. cd 命令 : 切换工作目录
 
@@ -127,7 +125,7 @@ Linux cd 命令用于切换当前工作目录至 dirName(目录参数)。
 cd [dirName]
 ```
 
-![cd](./images/cd-example.png)
+![cd](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/cd-example.png)
 
 ## 9. pwd 命令 : 显示工作目录
 
@@ -139,7 +137,7 @@ Linux pwd 命令用于显示工作目录。
 pwd
 ```
 
-![pwd](./images/pwd-example.png)
+![pwd](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/pwd-example.png)
 
 ## 10. mkdir 命令 : 创建目录
 
@@ -153,7 +151,7 @@ mkdir [-p] dirName
 
 - -p 确保目录名称存在,不存在的就建一个。
 
-![mkdir](./images/mkdir-example.png)
+![mkdir](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/mkdir-example.png)
 
 ## 11. rmdir 命令 : 删除空目录
 
@@ -167,7 +165,7 @@ rmdir [-p] dirName
 
 - -p 是当子目录被删除后使它也成为空目录的话,则顺便一并删除。
 
-![rmdir](./images/rmdir-example.png)
+![rmdir](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/rmdir-example.png)
 
 ## 12. cat 命令 : 查看文件内容
 
@@ -177,7 +175,7 @@ cat 命令用于连接文件并打印到标准输出设备上。
 cat fileName
 ```
 
-![cat](./images/cat-example.png)
+![cat](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/cat-example.png)
 
 ## 13. ping 命令 : 检测主机
 
@@ -191,7 +189,7 @@ ping  [主机名称或IP地址]
 
 - -c<完成次数> 设置完成要求回应的次数。
 
-![ping](./images/ping-example.png)
+![ping](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/ping-example.png)
 
 ## 14. telnet 命令 : 端口是否可访问
 
@@ -203,7 +201,7 @@ ping  [主机名称或IP地址]
 telnet [主机名称或IP地址<通信端口>]
 ```
 
-![telnet](./images/telnet-example.png)
+![telnet](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/telnet-example.png)
 
 ## 15. grep 命令 : 查找关键字
 
@@ -213,7 +211,7 @@ Linux grep 命令用于查找文件里符合条件的字符串。
 grep [文件或目录...]
 ```
 
-![grep](./images/grep-example.png)
+![grep](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/grep-example.png)
 
 ## 16. ps 命令 : 显示当前进程状态
 
@@ -241,7 +239,7 @@ ps -ef # 显示所有命令，连带命令行
 - 只能处理前一条指令的正确输出，不能处理错误输出
 - 管道命令必须要能够接受来自前一个命令的数据成为 standard input 继续处理才行。
 
-![pipe](./images/pipe-example.png)
+![pipe](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/pipe-example.png)
 
 ## 18. kill 命令 : 杀死进程
 
@@ -253,7 +251,7 @@ kill 可将指定的信息送至程序。预设的信息为 SIGTERM(15),可将�
 kill [-s <信息名称或编号>][程序]　或　kill [-l <信息编号>]
 ```
 
-![kill](./images/kill-example.png)
+![kill](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/kill-example.png)
 
 ## 19. top 命令 : 实时显示进程动态
 
@@ -271,7 +269,7 @@ top
 top -pid 4712
 ```
 
-![top](./images/top-example.gif)
+![top](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/top-example.gif)
 
 ## 20. clear 命令 : 清除屏幕
 
@@ -281,7 +279,7 @@ Linux clear 命令用于清除屏幕。
 clear
 ```
 
-![clear](./images/clear-example.gif)
+![clear](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/clear-example.gif)
 
 ## 21. alias 命令 : 别名配置
 
@@ -295,7 +293,7 @@ alias[别名]=[指令名称]
 
 比如 git 原先就配置了一些别名,我们来看看
 
-![alias](./images/alias-example.png)
+![alias](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/alias-example.png)
 
 ## 22. find 命令 : 查找文件
 
@@ -307,7 +305,7 @@ Linux find 命令用来在指定目录下查找文件。任何位于参数之前
 find   path   -option   [   -print ]   [ -exec   -ok   command ]   {} \;
 ```
 
-![find](./images/find-example.png)
+![find](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/find-example.png)
 
 ## 23. curl 命令 : 文件传输
 
@@ -327,15 +325,15 @@ curl 命令能做很多事,用过的人都说香,我说说我常用的场景吧:
 
 1. 调试请求
 
-![curl](./images/curl-example-1.png)
+![curl](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/curl-example-1.png)
 
 2. 查看头部信息
 
-![curl](./images/curl-example-3.png)
+![curl](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/curl-example-3.png)
 
 3. 抓取网页
 
-![curl](./images/curl-example-2.png)
+![curl](https://raw.githubusercontent.com/webfansplz/article/master/linux-command/images/curl-example-2.png)
 
 ## 后记
 
