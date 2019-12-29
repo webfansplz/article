@@ -32,6 +32,8 @@
 
 该命令支持以表格的形式输出日志信息。打印复杂信息时尝试使用 console.table 来替代 console.log 会更加清晰。
 
+![table](./images/table.png)
+
 ## 使用 console.dir
 
 console.dir(object)命令可以列出参数 object 的所有对象属性。
@@ -49,6 +51,22 @@ console.dir(object)命令可以列出参数 object 的所有对象属性。
 通过调用 time()可以开启计时器。你必须传入一个字符串参数来唯一标记这个计时器的 ID。当你要结束计时的时候可以调用 timeEnd()，并且传入指定的名字。计时结束后控制台会打印计时器的名字和具体的时间。
 
 ![time](./images/time.png)
+
+## 分析程序性能
+
+在 DevTools 窗口控制台中，调用 console.profile()开启一个 JavaScript CPU 分析器.结束分析器直接调用 console.profileEnd().
+
+![profile](./images/profile.png)
+
+具体的性能分析会在分析器面板中
+
+![profile_1](./images/profile_1.png)
+
+## 统计表达式执行次数
+
+count()方法用于统计表达式被执行的次数,它接受一个字符串参数用于标记不同的记号。如果两次传入相同的字符串,该方法就会累积计数。
+
+![count](./images/count.png)
 
 ## 清空控制台历史记录
 
