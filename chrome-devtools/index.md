@@ -12,19 +12,19 @@
 
 你也可以反过来,在控制台输出的 DOM 元素上右键选择 Reveal in Elements Panel 来直接在 DOM 树种查看。
 
-![0](./images/0.gif)
+![0](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/0.gif)
 
 ## 2. 访问最近的控制台结果
 
 在控制台输入`$_`可以获控制台最近一次的输出结果。
 
-![_](./images/_.gif)
+![_](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/_.gif)
 
 ## 3. 访问最近选择的元素和对象
 
 控制台会存储最近 5 个被选择的元素和对象。当你在元素面板选择一个元素或在分析器面板选择一个对象,记录都会存储在栈中。 可以使用`$x`来操作历史栈,x 是从 0 开始计数的,所以`$0` 表示最近选择的元素,`$4` 表示最后选择的元素。
 
-![4](./images/4.png)
+![4](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/4.png)
 
 ## 4. 选择元素
 
@@ -34,29 +34,29 @@
 
 - `$x()` - 返回满足指定 XPath 的所有元素。
 
-![select](./images/select.png)
+![select](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/select.png)
 
 ## 5. 使用 console.table
 
 该命令支持以表格的形式输出日志信息。打印复杂信息时尝试使用 console.table 来替代 console.log 会更加清晰。
 
-![table](./images/table.png)
+![table](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/table.png)
 
 ## 6. 使用 console.dir,可简写为 dir
 
 console.dir(object)/dir(object) 命令可以列出参数 object 的所有对象属性。
 
-![dir](./images/dir.gif)
+![dir](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/dir.gif)
 
 ## 7. 复制 copy
 
 你可以通过 copy 方法在控制台里复制你想要的东西。
 
-![copy](./images/copy.gif)
+![copy](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/copy.gif)
 
 ## 8. 获取对象键值 keys(object)/values(object)
 
-![keys_values](./images/keys_values.png)
+![keys_values](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/keys_values.png)
 
 ## 9. 函数监听器 monitor(function)/unmonitor(function)
 
@@ -64,7 +64,7 @@ monitor(function),当调用指定的函数时,会将一条消息记录到控制�
 
 使用 unmonitor(函数)停止对指定函数的监视。
 
-![monitor](./images/monitor.png)
+![monitor](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/monitor.png)
 
 ## 10. 事件监听器 monitorEvents(object[, events])/unmonitorEvents(object[, events])
 
@@ -72,29 +72,29 @@ monitorEvents(object[, events]),当指定的对象上发生指定的事件之一
 
 unmonitorevent (object[， events])停止监视指定对象和事件的事件。
 
-![monitorevents](./images/monitorevents.png)
+![monitorevents](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/monitorevents.png)
 
 ## 11. 耗时监控
 
 通过调用 time()可以开启计时器。你必须传入一个字符串参数来唯一标记这个计时器的 ID。当你要结束计时的时候可以调用 timeEnd()，并且传入指定的名字。计时结束后控制台会打印计时器的名字和具体的时间。
 
-![time](./images/time.png)
+![time](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/time.png)
 
 ## 12. 分析程序性能
 
 在 DevTools 窗口控制台中，调用 console.profile()开启一个 JavaScript CPU 分析器.结束分析器直接调用 console.profileEnd().
 
-![profile](./images/profile.png)
+![profile](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/profile.png)
 
 具体的性能分析会在分析器面板中
 
-![profile_1](./images/profile_1.png)
+![profile_1](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/profile_1.png)
 
 ## 13. 统计表达式执行次数
 
 count()方法用于统计表达式被执行的次数,它接受一个字符串参数用于标记不同的记号。如果两次传入相同的字符串,该方法就会累积计数。
 
-![count](./images/count.png)
+![count](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/count.png)
 
 ## 14. 清空控制台历史记录
 
@@ -105,13 +105,13 @@ count()方法用于统计表达式被执行的次数,它接受一个字符串参
 - 在 JavaScript 脚本中调用 console.clear()。
 - 使用快捷键 Cmd + K (Mac) Ctrl + L (Windows and Linux)。
 
-![clear](./images/clear.gif)
+![clear](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/clear.gif)
 
 ## 15. 异步操作
 
 async/await 使得异步操作变得更加容易和可读。唯一的问题在于 await 需要在 async 函数中使用。Chrome DevTools 支持直接使用 await。
 
-![await](./images/await.png)
+![await](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/await.png)
 
 ## 16. debugger 断点
 
@@ -119,13 +119,13 @@ async/await 使得异步操作变得更加容易和可读。唯一的问题在�
 
 使用 debugger 关键词,我们可以直接在源码中定义断点,方便很多。
 
-![debugger](./images/debugger.png)
+![debugger](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/debugger.png)
 
 ## 17. 截图
 
 我们经常需要截图,Chrome DevTools 提供了 4 种截图方式,基本覆盖了我们的需求场景,快捷键 ctrl+shift+p ,打开 Command Menu,输入 screenshot,可以看到以下 4 个选项:
 
-![screenshot](./images/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/screenshot.png)
 
 去试试吧,很香!
 
@@ -133,13 +133,13 @@ async/await 使得异步操作变得更加容易和可读。唯一的问题在�
 
 Chrome 提供了 亮&暗 两种主题,当你视觉疲劳的时候,可以 switch 哦, 快捷键 ctrl+shift+p ,打开 Command Menu,输入 theme ,即可选择切换
 
-![theme](./images/theme.gif)
+![theme](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/theme.gif)
 
 ## 19. 复制 Fetch
 
 在 Network 标签下的所有的请求,都可以复制为一个完整的 Fetch 请求的代码。
 
-![copy-fetch](./images/copy-fetch.gif)
+![copy-fetch](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/copy-fetch.gif)
 
 ## 20. 重写 Overrides
 
@@ -153,7 +153,7 @@ Chrome 提供了 亮&暗 两种主题,当你视觉疲劳的时候,可以 switch 
 选择 Overrides 子标签
 选择 + Select folder for overrides,来为 Overrides 设置一个保存重写属性的目录
 
-![overrides](./images/overrides.png)
+![overrides](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/overrides.png)
 
 ## 21. 实时表达式 Live Expression
 
@@ -161,7 +161,7 @@ Chrome 提供了 亮&暗 两种主题,当你视觉疲劳的时候,可以 switch 
 
 点击 "Create Live Expression" 眼睛图标,打开动态表达式界面,输入要监控的表达式
 
-![live_expression](./images/live_expression.gif)
+![live_expression](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/live_expression.gif)
 
 ## 22. 检查动画
 
@@ -175,11 +175,11 @@ Chrome DevTools 动画检查器有两个主要用途。
 
 快捷键 ctrl+shift+p ,打开 Command Menu,键入 Drawer: Show Animations。
 
-![animations](./images/animations.gif)
+![animations](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/animations.gif)
 
 ## 23. 滚动到视图区域 Scroll into view
 
-![scrollintoview](./images/scrollintoview.png)
+![scrollintoview](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/scrollintoview.png)
 
 ## 24. 工作区编辑文件 Edit Files With Workspaces
 
@@ -187,7 +187,7 @@ Chrome DevTools 动画检查器有两个主要用途。
 
 进入 Sources Menu, Filesystem 下 点击 Add folder to workspace 添加要同步的工作目录
 
-![workspaces](./images/workspaces.gif)
+![workspaces](https://raw.githubusercontent.com/webfansplz/article/master/chrome-devtools/images/workspaces.gif)
 
 # 快捷键
 
