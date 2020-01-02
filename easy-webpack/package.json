@@ -1,0 +1,16 @@
+{
+  "name": "easy-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/parser": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/traverse": "^7.7.4"
+  }
+}
