@@ -64,6 +64,12 @@
 
 [[实践系列] null-cli 来啦, 一行命令提高你的效率 ! ](https://github.com/webfansplz/article/issues/18)
 
+## null 记
+
+[前端应该会的 23 个 linux 常用命令](https://github.com/webfansplz/article/issues/37)
+
+[0202 年了, Chrome DevTools 你还只会 console.log 吗 ?](https://github.com/webfansplz/article/issues/36)
+
 ## Vue
 
 [撸一个简版 vuex](https://github.com/webfansplz/article/issues/20)
