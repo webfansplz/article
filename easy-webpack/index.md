@@ -617,6 +617,8 @@ new Compiler(options).run();
 
 这下应该明白了吧 ~ 可以直接复制上面代码到控制台输出哦~
 
+[完整代码地址戳我 👈](https://github.com/webfansplz/article/tree/master/easy-webpack)
+
 ## 原理总结
 
 > Webpack 是一个庞大的 Node.js 应用,如果你阅读过它的源码,你会发现实现一个完整的 Webpack 需要编写非常多的代码。 但你无需了解所有的细节,只需了解其整体架构和部分细节即可。
@@ -624,5 +626,11 @@ new Compiler(options).run();
 > 对 Webpack 的使用者来说,它是一个简单强大的工具； 对 Webpack 的开发者来说,它是一个扩展性的高系统。
 
 > Webpack 之所以能成功,在于它把复杂的实现隐藏了起来,给用户暴露出的只是一个简单的工具,让用户能快速达成目的。 同时整体架构设计合理,扩展性高,开发扩展难度不高,通过社区补足了大量缺失的功能,让 Webpack 几乎能胜任任何场景。
+
+## 参考
+
+[webpack 中文文档](https://www.webpackjs.com/)
+
+[深入浅出 webpack](https://webpack.wuhaolin.cn/)
 
 <!-- https://webpack.wuhaolin.cn/ -->
