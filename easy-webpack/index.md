@@ -112,7 +112,9 @@ const options = require("./webpack.config");
 
 const Parser = {
   getAst: path => {
+    // 读取入口文件
     const content = fs.readFileSync(path, "utf-8");
+    // 将文件内容转为AST抽象语法树
     return parser.parse(content, {
       sourceType: "module"
     });
@@ -154,7 +156,9 @@ const traverse = require("@babel/traverse").default;
 
 const Parser = {
   getAst: path => {
+    // 读取入口文件
     const content = fs.readFileSync(path, "utf-8");
+    // 将文件内容转为AST抽象语法树
     return parser.parse(content, {
       sourceType: "module"
     });
@@ -163,10 +167,10 @@ const Parser = {
     const dependecies = {};
     // 遍历所有的 import 模块,存入dependecies
     traverse(ast, {
-      // 类型为 ImportDeclaration 的 AST 节点 (import 语句)
+      // 类型为 ImportDeclaration 的 AST 节点 (即为import 语句)
       ImportDeclaration({ node }) {
         const dirname = path.dirname(filename);
-        // 依赖模块,在项⽬目中的路路径
+        // 保存依赖模块路径,之后生成依赖关系图需要用到
         const filepath = "./" + path.join(dirname, node.source.value);
         dependecies[node.source.value] = filepath;
       }
@@ -213,7 +217,9 @@ const { transformFromAst } = require("@babel/core");
 
 const Parser = {
   getAst: path => {
+    // 读取入口文件
     const content = fs.readFileSync(path, "utf-8");
+    // 将文件内容转为AST抽象语法树
     return parser.parse(content, {
       sourceType: "module"
     });
@@ -222,10 +228,10 @@ const Parser = {
     const dependecies = {};
     // 遍历所有的 import 模块,存入dependecies
     traverse(ast, {
-      // 类型为 ImportDeclaration 的 AST 节点 (import 语句)
+      // 类型为 ImportDeclaration 的 AST 节点 (即为import 语句)
       ImportDeclaration({ node }) {
         const dirname = path.dirname(filename);
-        // 依赖模块,在项⽬目中的路路径
+        // 保存依赖模块路径,之后生成依赖关系图需要用到
         const filepath = "./" + path.join(dirname, node.source.value);
         dependecies[node.source.value] = filepath;
       }
@@ -233,6 +239,7 @@ const Parser = {
     return dependecies;
   },
   getCode: ast => {
+    // AST转换为code
     const { code } = transformFromAst(ast, null, {
       presets: ["@babel/preset-env"]
     });
@@ -267,46 +274,355 @@ new Compiler(options).run();
 
 ### 5. 递归解析所有依赖项,生成依赖关系图
 
-## 原理总结
+```js
+const fs = require("fs");
+const path = require("path");
+const options = require("./webpack.config");
+const parser = require("@babel/parser");
+const traverse = require("@babel/traverse").default;
+const { transformFromAst } = require("@babel/core");
 
-Webpack 是一个庞大的 Node.js 应用，如果你阅读过它的源码，你会发现实现一个完整的 Webpack 需要编写非常多的代码。 但你无需了解所有的细节，只需了解其整体架构和部分细节即可。
+const Parser = {
+  getAst: path => {
+    // 读取入口文件
+    const content = fs.readFileSync(path, "utf-8");
+    // 将文件内容转为AST抽象语法树
+    return parser.parse(content, {
+      sourceType: "module"
+    });
+  },
+  getDependecies: (ast, filename) => {
+    const dependecies = {};
+    // 遍历所有的 import 模块,存入dependecies
+    traverse(ast, {
+      // 类型为 ImportDeclaration 的 AST 节点 (即为import 语句)
+      ImportDeclaration({ node }) {
+        const dirname = path.dirname(filename);
+        // 保存依赖模块路径,之后生成依赖关系图需要用到
+        const filepath = "./" + path.join(dirname, node.source.value);
+        dependecies[node.source.value] = filepath;
+      }
+    });
+    return dependecies;
+  },
+  getCode: ast => {
+    // AST转换为code
+    const { code } = transformFromAst(ast, null, {
+      presets: ["@babel/preset-env"]
+    });
+    return code;
+  }
+};
 
-对 Webpack 的使用者来说，它是一个简单强大的工具； 对 Webpack 的开发者来说，它是一个扩展性的高系统。
+class Compiler {
+  constructor(options) {
+    // webpack 配置
+    const { entry, output } = options;
+    // 入口
+    this.entry = entry;
+    // 出口
+    this.output = output;
+    // 模块
+    this.modules = [];
+  }
+  // 构建启动
+  run() {
+    // 解析入口文件
+    const info = this.build(this.entry);
+    this.modules.push(info);
+    this.modules.forEach(({ dependecies }) => {
+      // 判断有依赖对象,递归解析所有依赖项
+      if (dependecies) {
+        for (const dependency in dependecies) {
+          this.modules.push(this.build(dependecies[dependency]));
+        }
+      }
+    });
+    // 生成依赖关系图
+    const dependencyGraph = this.modules.reduce(
+      (graph, item) => ({
+        ...graph,
+        // 使用文件路径作为每个模块的唯一标识符,保存对应模块的依赖对象和文件内容
+        [item.filename]: {
+          dependecies: item.dependecies,
+          code: item.code
+        }
+      }),
+      {}
+    );
+  }
+  build(filename) {
+    const { getAst, getDependecies, getCode } = Parser;
+    const ast = getAst(filename);
+    const dependecies = getDependecies(ast, filename);
+    const code = getCode(ast);
+    return {
+      // 文件路径,可以作为每个模块的唯一标识符
+      filename,
+      // 依赖对象,保存着依赖模块路径
+      dependecies,
+      // 文件内容
+      code
+    };
+  }
+  // 重写 require函数,输出bundle
+  generate() {}
+}
 
-Webpack 之所以能成功，在于它把复杂的实现隐藏了起来，给用户暴露出的只是一个简单的工具，让用户能快速达成目的。 同时整体架构设计合理，扩展性高，开发扩展难度不高，通过社区补足了大量缺失的功能，让 Webpack 几乎能胜任任何场景。
+new Compiler(options).run();
+```
 
-<!-- https://webpack.wuhaolin.cn/ -->
+### 6. 重写 require 函数,输出 bundle
 
 ```js
+const fs = require("fs");
+const path = require("path");
+const options = require("./webpack.config");
+const parser = require("@babel/parser");
+const traverse = require("@babel/traverse").default;
+const { transformFromAst } = require("@babel/core");
 
-(function(modules) {
-  var installedModules = {};
-  function __webpack_require__(moduleId) {
-    if (installedModules[moduleId]) {
-      return installedModules[moduleId].exports;
-    }
-    var module = (installedModules[moduleId] = {
-      i: moduleId,
-
-l: false,
-      exports: {}
+const Parser = {
+  getAst: path => {
+    // 读取入口文件
+    const content = fs.readFileSync(path, "utf-8");
+    // 将文件内容转为AST抽象语法树
+    return parser.parse(content, {
+      sourceType: "module"
     });
-    modules[moduleId].call(
-      module.exports,
-      module,
-      module.exports,
-      __webpack_require__
+  },
+  getDependecies: (ast, filename) => {
+    const dependecies = {};
+    // 遍历所有的 import 模块,存入dependecies
+    traverse(ast, {
+      // 类型为 ImportDeclaration 的 AST 节点 (即为import 语句)
+      ImportDeclaration({ node }) {
+        const dirname = path.dirname(filename);
+        // 保存依赖模块路径,之后生成依赖关系图需要用到
+        const filepath = "./" + path.join(dirname, node.source.value);
+        dependecies[node.source.value] = filepath;
+      }
+    });
+    return dependecies;
+  },
+  getCode: ast => {
+    // AST转换为code
+    const { code } = transformFromAst(ast, null, {
+      presets: ["@babel/preset-env"]
+    });
+    return code;
+  }
+};
+
+class Compiler {
+  constructor(options) {
+    // webpack 配置
+    const { entry, output } = options;
+    // 入口
+    this.entry = entry;
+    // 出口
+    this.output = output;
+    // 模块
+    this.modules = [];
+  }
+  // 构建启动
+  run() {
+    // 解析入口文件
+    const info = this.build(this.entry);
+    this.modules.push(info);
+    this.modules.forEach(({ dependecies }) => {
+      // 判断有依赖对象,递归解析所有依赖项
+      if (dependecies) {
+        for (const dependency in dependecies) {
+          this.modules.push(this.build(dependecies[dependency]));
+        }
+      }
+    });
+    // 生成依赖关系图
+    const dependencyGraph = this.modules.reduce(
+      (graph, item) => ({
+        ...graph,
+        // 使用文件路径作为每个模块的唯一标识符,保存对应模块的依赖对象和文件内容
+        [item.filename]: {
+          dependecies: item.dependecies,
+          code: item.code
+        }
+      }),
+      {}
     );
-    module.l = true;
-    return module.exports;
+    this.generate(dependencyGraph);
+  }
+  build(filename) {
+    const { getAst, getDependecies, getCode } = Parser;
+    const ast = getAst(filename);
+    const dependecies = getDependecies(ast, filename);
+    const code = getCode(ast);
+    return {
+      // 文件路径,可以作为每个模块的唯一标识符
+      filename,
+      // 依赖对象,保存着依赖模块路径
+      dependecies,
+      // 文件内容
+      code
+    };
+  }
+  // 重写 require函数 (浏览器不能识别commonjs语法),输出bundle
+  generate(code) {
+    // 输出文件路径
+    const filePath = path.join(this.output.path, this.output.filename);
+    // 懵逼了吗? 没事,下一节我们捋一捋
+    const bundle = `(function(graph){
+      function require(module){
+        function localRequire(relativePath){
+          return require(graph[module].dependecies[relativePath])
+        }
+        var exports = {};
+        (function(require,exports,code){
+          eval(code)
+        })(localRequire,exports,graph[module].code);
+        return exports;
+      }
+      require('${this.entry}')
+    })(${JSON.stringify(code)})`;
+
+    // 把文件内容写入到文件系统
+    fs.writeFileSync(filePath, bundle, "utf-8");
+  }
 }
-  return __webpack_require__((__webpack_require__.s =
-"./index.js"));
+
+new Compiler(options).run();
+```
+
+### 7. 看完这节,彻底搞懂 bundle 实现
+
+我们通过下面的例子来进行讲解,先死亡凝视 30 秒
+
+```js
+(function(graph) {
+  function require(moduleId) {
+    function localRequire(relativePath) {
+      return require(graph[moduleId].dependecies[relativePath]);
+    }
+    var exports = {};
+    (function(require, exports, code) {
+      eval(code);
+    })(localRequire, exports, graph[moduleId].code);
+    return exports;
+  }
+  require("./src/index.js");
 })({
-  "./index.js": function(module, exports) {
-    eval(
-      '// import a from "./a";\n\nconsole.log("hello
-word");\n\n\n//# sourceURL=webpack:///./index.js?'
-); }
+  "./src/index.js": {
+    dependecies: { "./hello.js": "./src/hello.js" },
+    code:
+      '"use strict";\n\nvar _hello = require("./hello.js");\n\ndocument.write((0, _hello.say)("webpack"));'
+  },
+  "./src/hello.js": {
+    dependecies: {},
+    code:
+      '"use strict";\n\nObject.defineProperty(exports, "__esModule", {\n  value: true\n});\nexports.say = say;\n\nfunction say(name) {\n  return "hello ".concat(name);\n}'
+  }
 });
 ```
+
+#### step 1 : 从入口文件开始执行
+
+```js
+// 定义一个立即执行函数,传入生成的依赖关系图
+(function(graph) {
+  // 重写require函数
+  function require(moduleId) {
+    console.log(moduleId); // ./src/index.js
+  }
+  // 从入口文件开始执行
+  require("./src/index.js");
+})({
+  "./src/index.js": {
+    dependecies: { "./hello.js": "./src/hello.js" },
+    code:
+      '"use strict";\n\nvar _hello = require("./hello.js");\n\ndocument.write((0, _hello.say)("webpack"));'
+  },
+  "./src/hello.js": {
+    dependecies: {},
+    code:
+      '"use strict";\n\nObject.defineProperty(exports, "__esModule", {\n  value: true\n});\nexports.say = say;\n\nfunction say(name) {\n  return "hello ".concat(name);\n}'
+  }
+});
+```
+
+#### step 2 : 使用 eval 执行代码
+
+```js
+// 定义一个立即执行函数,传入生成的依赖关系图
+(function(graph) {
+  // 重写require函数
+  function require(moduleId) {
+    (function(code) {
+      console.log(code); // "use strict";\n\nvar _hello = require("./hello.js");\n\ndocument.write((0, _hello.say)("webpack"));
+      eval(code); // Uncaught TypeError: Cannot read property 'code' of undefined
+    })(graph[moduleId].code);
+  }
+  // 从入口文件开始执行
+  require("./src/index.js");
+})({
+  "./src/index.js": {
+    dependecies: { "./hello.js": "./src/hello.js" },
+    code:
+      '"use strict";\n\nvar _hello = require("./hello.js");\n\ndocument.write((0, _hello.say)("webpack"));'
+  },
+  "./src/hello.js": {
+    dependecies: {},
+    code:
+      '"use strict";\n\nObject.defineProperty(exports, "__esModule", {\n  value: true\n});\nexports.say = say;\n\nfunction say(name) {\n  return "hello ".concat(name);\n}'
+  }
+});
+```
+
+可以看到,我们在执行"./src/index.js"文件代码的时候报错了,这是因为 index.js 里引用依赖 hello.js,而我们没有对依赖进行处理,接下来我们对依赖引用进行处理。
+
+#### step 3 : 依赖对象寻址映射,获取 exports 对象
+
+```js
+// 定义一个立即执行函数,传入生成的依赖关系图
+(function(graph) {
+  // 重写require函数
+  function require(moduleId) {
+    // 找到对应moduleId的依赖对象,调用require函数,eval执行,拿到exports对象
+    function localRequire(relativePath) {
+      return require(graph[moduleId].dependecies[relativePath]); // {__esModule: true, say: ƒ say(name)}
+    }
+    // 定义exports对象
+    var exports = {};
+    (function(require, exports, code) {
+      // commonjs语法使用module.exports暴露实现,我们传入的exports对象会捕获依赖对象(hello.js)暴露的实现(exports.say = say)并写入
+      eval(code);
+    })(localRequire, exports, graph[moduleId].code);
+    // 暴露exports对象,即暴露依赖对象对应的实现
+    return exports;
+  }
+  // 从入口文件开始执行
+  require("./src/index.js");
+})({
+  "./src/index.js": {
+    dependecies: { "./hello.js": "./src/hello.js" },
+    code:
+      '"use strict";\n\nvar _hello = require("./hello.js");\n\ndocument.write((0, _hello.say)("webpack"));'
+  },
+  "./src/hello.js": {
+    dependecies: {},
+    code:
+      '"use strict";\n\nObject.defineProperty(exports, "__esModule", {\n  value: true\n});\nexports.say = say;\n\nfunction say(name) {\n  return "hello ".concat(name);\n}'
+  }
+});
+```
+
+这下应该明白了吧 ~ 可以直接复制上面代码到控制台输出哦~
+
+## 原理总结
+
+> Webpack 是一个庞大的 Node.js 应用,如果你阅读过它的源码,你会发现实现一个完整的 Webpack 需要编写非常多的代码。 但你无需了解所有的细节,只需了解其整体架构和部分细节即可。
+
+> 对 Webpack 的使用者来说,它是一个简单强大的工具； 对 Webpack 的开发者来说,它是一个扩展性的高系统。
+
+> Webpack 之所以能成功,在于它把复杂的实现隐藏了起来,给用户暴露出的只是一个简单的工具,让用户能快速达成目的。 同时整体架构设计合理,扩展性高,开发扩展难度不高,通过社区补足了大量缺失的功能,让 Webpack 几乎能胜任任何场景。
+
+<!-- https://webpack.wuhaolin.cn/ -->
