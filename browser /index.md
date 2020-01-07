@@ -1,3 +1,35 @@
+# 从 8 道面试题看浏览器渲染过程与性能优化
+
+## 前言
+
+移动互联网时代,用户对于网页的打开速度要求越来越高。百度用户体验部研究表明,页面放弃率和页面的打开时间关系如下图 所示。
+
+![chart](./chart.png)
+
+根据百度用户体验部的研究结果来看,普通用户期望且能够接受的页面加载时间在 3 秒以内。若页面的加载时间过慢,用户就会失去耐心而选择离开。
+
+首屏作为直面用户的第一屏,其重要性不言而喻。优化用户体验更是我们前端开发非常需要 focus 的东西之一。
+
+本文我们通过 8 道面试题来聊聊浏览器渲染过程与性能优化。
+
+我们首先带着这 8 个问题,来了解浏览器渲染过程,后面会给出题解~
+
+1. 为什么 Javascript 要是单线程的 ?
+
+2. 为什么 JS 阻塞页面加载 ?
+
+3. css 加载会造成阻塞吗 ？
+
+4. DOMContentLoaded 与 load 的区别 ?
+
+5. 什么是 CRP,即关键渲染路径(Critical Rendering Path)? 如何优化 ?
+
+6. defer 和 async 的区别 ?
+
+7. 谈谈浏览器的回流与重绘 ?
+
+8. 什么是渲染层合并 (Composite) ?
+
 ## 进程 (process) 和线程 (thread)
 
 进程（process）和线程（thread）是操作系统的基本概念。
@@ -138,7 +170,7 @@ Chrome 采用多进程架构,其顶层存在一个 Browser process 用以协调�
 
 5. 浏览器主进程将默认的图层和复合图层交给 GPU 进程,GPU 进程再将各个图层合成（composite）,最后显示出页面
 
-## 十万个为什么
+## 题解
 
 ### 1. 为什么 Javascript 要是单线程的 ?
 
@@ -186,11 +218,12 @@ DOM 解析和 CSS 解析是两个并行的进程,所以 **CSS 加载不会阻塞
 
 ### 4. DOMContentLoaded 与 load 的区别 ?
 
-- 当 DOMContentLoaded 事件触发时,仅当 DOM 加载完成,不包括样式表,图片。
+- 当 DOMContentLoaded 事件触发时,仅当 DOM 解析完成后,不包括样式表,图片。我们前面提到 **CSS 加载会阻塞 Dom 的渲染和后面 js 的执行,js 会阻塞 Dom 解析**,所以我们可以得到结论:
+  当文档中没有脚本时,浏览器解析完文档便能触发 DOMContentLoaded 事件。如果文档中包含脚本,则脚本会阻塞文档的解析,而脚本需要等 CSSOM 构建完成才能执行。在任何情况下,DOMContentLoaded 的触发不需要等待图片等其他资源加载完成。
 
-- 当 onload 事件触发时,页面上所有的 DOM,样式表,脚本,图片等资源已经加载完毕。
+* 当 onload 事件触发时,页面上所有的 DOM,样式表,脚本,图片等资源已经加载完毕。
 
-- DOMContentLoaded -> load。
+* DOMContentLoaded -> load。
 
 ### 5. 什么是 CRP,即关键渲染路径(Critical Rendering Path)? 如何优化 ?
 
@@ -284,16 +317,172 @@ DOM 解析和 CSS 解析是两个并行的进程,所以 **CSS 加载不会阻塞
 
 [来自 defer 和 async 的区别 -- nightire 回答](https://segmentfault.com/q/1010000000640869)
 
-<!-- https://www.infoq.cn/article/CS9-WZQlNR5h05HHDo1b -->
+### 7. 谈谈浏览器的回流与重绘
 
-<!-- https://segmentfault.com/a/1190000012925872#item-4 -->
+**回流必将引起重绘,重绘不一定会引起回流。**
 
-<!-- https://juejin.im/post/5a6547d0f265da3e283a1df7 -->
+#### 回流(Reflow)
 
-<!-- https://juejin.im/post/5a9923e9518825558251c96a -->
+当 Render Tree 中部分或全部元素的尺寸、结构、或某些属性发生改变时,浏览器重新渲染部分或全部文档的过程称为回流。
 
-<!-- https://juejin.im/post/5ca0c0abe51d4553a942c17d -->
+会导致回流的操作：
 
-<!-- https://www.imweb.io/topic/58e3bfa845e5c13468f567d5 -->
+页面首次渲染
 
-<!-- https://zhuanlan.zhihu.com/p/36700206 -->
+浏览器窗口大小发生改变
+
+元素尺寸或位置发生改变元素内容变化（文字数量或图片大小等等）
+
+元素字体大小变化
+
+添加或者删除可见的 DOM 元素
+
+激活 CSS 伪类（例如：:hover）
+
+查询某些属性或调用某些方法
+
+一些常用且会导致回流的属性和方法:
+
+```js
+
+clientWidth、clientHeight、clientTop、clientLeft
+
+offsetWidth、offsetHeight、offsetTop、offsetLeft
+
+scrollWidth、scrollHeight、scrollTop、scrollLeft
+
+scrollIntoView()、scrollIntoViewIfNeeded()
+
+getComputedStyle()
+
+getBoundingClientRect()
+
+scrollTo()
+
+```
+
+#### 重绘(Repaint)
+
+当页面中元素样式的改变并不影响它在文档流中的位置时（例如：color、background-color、visibility 等）,浏览器会将新样式赋予给元素并重新绘制它,这个过程称为重绘。
+
+#### 性能影响
+
+**回流比重绘的代价要更高。**
+
+有时即使仅仅回流一个单一的元素,它的父元素以及任何跟随它的元素也会产生回流。现代浏览器会对频繁的回流或重绘操作进行优化：浏览器会维护一个队列,把所有引起回流和重绘的操作放入队列中,如果队列中的任务数量或者时间间隔达到一个阈值的,浏览器就会将队列清空,进行一次批处理,这样可以把多次回流和重绘变成一次。
+
+当你访问以下属性或方法时,浏览器会立刻清空队列:
+
+```js
+clientWidth、clientHeight、clientTop、clientLeft
+
+
+offsetWidth、offsetHeight、offsetTop、offsetLeft
+
+
+scrollWidth、scrollHeight、scrollTop、scrollLeft
+
+
+width、height
+
+
+getComputedStyle()
+
+
+getBoundingClientRect()
+
+```
+
+因为队列中可能会有影响到这些属性或方法返回值的操作,即使你希望获取的信息与队列中操作引发的改变无关,浏览器也会强行清空队列,确保你拿到的值是最精确的。
+
+#### 如何避免
+
+##### CSS
+
+- 避免使用 table 布局。
+
+- 尽可能在 DOM 树的最末端改变 class。
+
+- 避免设置多层内联样式。
+
+- 将动画效果应用到 position 属性为 absolute 或 fixed 的元素上。
+
+- 避免使用 CSS 表达式（例如：calc()）。
+
+##### Javascript
+
+- 避免频繁操作样式,最好一次性重写 style 属性,或者将样式列表定义为 class 并一次性更改 class 属性。
+
+- 避免频繁操作 DOM,创建一个 documentFragment,在它上面应用所有 DOM 操作,最后再把它添加到文档中。
+
+- 也可以先为元素设置 display: none,操作结束后再把它显示出来。因为在 display 属性为 none 的元素上进行的 DOM 操作不会引发回流和重绘。
+
+- 避免频繁读取会引发回流/重绘的属性,如果确实需要多次使用,就用一个变量缓存起来。
+
+- 对具有复杂动画的元素使用绝对定位,使它脱离文档流,否则会引起父元素及后续元素频繁回流。
+
+### 8. 什么是渲染层合并 (Composite) ?
+
+渲染层合并,对于页面中 DOM 元素的绘制(Paint)是在多个层上进行的。
+
+在每个层上完成绘制过程之后,浏览器会将绘制的位图发送给 GPU 绘制到屏幕上,将所有层按照合理的顺序合并成一个图层,然后在屏幕上呈现。
+
+对于有位置重叠的元素的页面,这个过程尤其重要,因为一旦图层的合并顺序出错,将会导致元素显示异常。
+
+![composite](./composite)
+
+RenderLayers 渲染层,这是负责对应 DOM 子树。
+
+GraphicsLayers 图形层,这是负责对应 RenderLayers 子树。
+
+RenderObjects 保持了树结构,一个 RenderObjects 知道如何绘制一个 node 的内容, 他通过向一个绘图上下文（GraphicsContext）发出必要的绘制调用来绘制 nodes。
+
+每个 GraphicsLayer 都有一个 GraphicsContext,GraphicsContext 会负责输出该层的位图,位图是存储在共享内存中,作为纹理上传到 GPU 中,最后由 GPU 将多个位图进行合成,然后 draw 到屏幕上,此时,我们的页面也就展现到了屏幕上。
+
+GraphicsContext 绘图上下文的责任就是向屏幕进行像素绘制(这个过程是先把像素级的数据写入位图中,然后再显示到显示器),在 chrome 里,绘图上下文是包裹了的 Skia（chrome 自己的 2d 图形绘制库）
+
+某些特殊的渲染层会被认为是合成层（Compositing Layers）,合成层拥有单独的 GraphicsLayer,而其他不是合成层的渲染层,则和其第一个拥有 GraphicsLayer 父层公用一个。
+
+#### 合成层的优点
+
+一旦 renderLayer 提升为了合成层就会有自己的绘图上下文,并且会开启硬件加速,有利于性能提升。
+
+- 合成层的位图,会交由 GPU 合成,比 CPU 处理要快 (提升到合成层后合成层的位图会交 GPU 处理,但请注意,仅仅只是合成的处理（把绘图上下文的位图输出进行组合）需要用到 GPU,生成合成层的位图处理（绘图上下文的工作）是需要 CPU。)
+
+- 当需要 repaint 时,只需要 repaint 本身,不会影响到其他的层 (当需要 repaint 的时候可以只 repaint 本身,不影响其他层,但是 paint 之前还有 style, layout,那就意味着即使合成层只是 repaint 了自己,但 style 和 layout 本身就很占用时间。)
+
+- 对于 transform 和 opacity 效果,不会触发 layout 和 paint (仅仅是 transform 和 opacity 不会引发 layout 和 paint,其他的属性不确定。)
+
+一般一个元素开启硬件加速后会变成合成层,可以独立于普通文档流中,改动后可以避免整个页面重绘,提升性能。
+
+注意不能滥用 GPU 加速,一定要分析其实际性能表现。因为 GPU 加速创建渲染层是有代价的,每创建一个新的渲染层,就意味着新的内存分配和更复杂的层的管理。并且在移动端 GPU 和 CPU 的带宽有限制,创建的渲染层过多时,合成也会消耗跟多的时间,随之而来的就是耗电更多,内存占用更多。过多的渲染层来带的开销而对页面渲染性能产生的影响,甚至远远超过了它在性能改善上带来的好处。
+
+这里就不细说了,有兴趣的童鞋推荐以下三篇文章 ~
+
+[Accelerated Rendering in Chrome](https://www.html5rocks.com/zh/tutorials/speed/layers/)
+
+[CSS GPU Animation: Doing It Right](https://www.smashingmagazine.com/2016/12/gpu-animation-doing-it-right/)
+
+[无线性能优化：Composite](https://fed.taobao.org/blog/taofed/do71ct/performance-composite/?spm=taofed.blogs.blog-list.10.67bd5ac8fHy0LS)
+
+## 参考
+
+[史上最全！图解浏览器的工作原理](https://www.infoq.cn/article/CS9-WZQlNR5h05HHDo1b)
+
+[从浏览器多进程到 JS 单线程，JS 运行机制最全面的一次梳理](https://juejin.im/post/5a6547d0f265da3e283a1df7)
+
+## 后记
+
+> 如果你和我一样喜欢前端,也爱动手折腾,欢迎关注我一起玩耍啊～ ❤️
+
+[github 地址,欢迎 follow 哦～](https://github.com/webfansplz)
+
+### 博客
+
+[我的博客,点 star,不迷路～](https://github.com/webfansplz/article)
+
+### 公众号
+
+前端时刻
+
+![前端时刻](https://raw.githubusercontent.com/webfansplz/article/master/qrcode.gif)
