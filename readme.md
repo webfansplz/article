@@ -64,6 +64,10 @@
 
 [[实践系列] null-cli 来啦, 一行命令提高你的效率 ! ](https://github.com/webfansplz/article/issues/18)
 
+## 前端工程化
+
+[webpack 打包原理 ? 看完这篇你就懂了 ! ](https://github.com/webfansplz/article/issues/38)
+
 ## null 记
 
 [前端应该会的 23 个 linux 常用命令](https://github.com/webfansplz/article/issues/37)
