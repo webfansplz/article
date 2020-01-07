@@ -4,7 +4,7 @@
 
 移动互联网时代,用户对于网页的打开速度要求越来越高。百度用户体验部研究表明,页面放弃率和页面的打开时间关系如下图 所示。
 
-![chart](./chart.png)
+![chart](https://raw.githubusercontent.com/webfansplz/article/master/browser/chart.png)
 
 根据百度用户体验部的研究结果来看,普通用户期望且能够接受的页面加载时间在 3 秒以内。若页面的加载时间过慢,用户就会失去耐心而选择离开。
 
@@ -38,7 +38,7 @@
 
 **线程是 CPU 调度的最小单位（是建立在进程基础上的一次程序运行单位）。**
 
-![process_thread](./process_thread.png)
+![process_thread](https://raw.githubusercontent.com/webfansplz/article/master/browser/process_thread.png)
 
 现代操作系统都是可以同时运行多个任务的,比如:用浏览器上网的同时还可以听音乐。
 
@@ -54,7 +54,7 @@
 
 应用也许还会创建多个线程来辅助工作,这些线程可以共享这部分内存中的数据。如果应用关闭,进程会被终结,操作系统会释放相关内存。
 
-![process_thread_example](./process_thread_example.jpg)
+![process_thread_example](https://raw.githubusercontent.com/webfansplz/article/master/browser/process_thread_example.jpg)
 
 ## 浏览器的多进程架构
 
@@ -66,7 +66,7 @@
 
 Chrome 采用多进程架构,其顶层存在一个 Browser process 用以协调浏览器的其它进程。
 
-![process](./process.png)
+![process](https://raw.githubusercontent.com/webfansplz/article/master/browser/process.png)
 
 ### 优点
 
@@ -86,7 +86,7 @@ Chrome 采用多进程架构,其顶层存在一个 Browser process 用以协调�
 
 ## 浏览器的主要进程和职责
 
-![process_list](./process_list.png)
+![process_list](https://raw.githubusercontent.com/webfansplz/article/master/browser/process_list.png)
 
 ### 主进程 Browser Process
 
@@ -108,7 +108,7 @@ Chrome 采用多进程架构,其顶层存在一个 Browser process 用以协调�
 
 浏览器的渲染进程是多线程的,我们来看看它有哪些主要线程 :
 
-![renderder_process](./renderder_process.png)
+![renderder_process](https://raw.githubusercontent.com/webfansplz/article/master/browser/renderder_process.png)
 
 ### 1. GUI 渲染线程
 
@@ -158,7 +158,7 @@ Chrome 采用多进程架构,其顶层存在一个 Browser process 用以协调�
 
 如果要讲从输入 url 到页面加载发生了什么,那怕是没完没了了...这里我们只谈谈浏览器渲染的流程。
 
-![workflow](./workflow.png)
+![workflow](https://raw.githubusercontent.com/webfansplz/article/master/browser/workflow.png)
 
 1. 解析 HTML 文件,构建 DOM 树,同时浏览器主进程负责下载 CSS 文件
 
@@ -299,7 +299,7 @@ DOM 解析和 CSS 解析是两个并行的进程,所以 **CSS 加载不会阻塞
 
 接着,我们来看一张图:
 
-![defer_async](./defer_async.jpeg)
+![defer_async](https://raw.githubusercontent.com/webfansplz/article/master/browser/defer_async.jpeg)
 
 蓝色线代表网络读取,红色线代表执行时间,这俩都是针对脚本的。绿色线代表 HTML 解析。
 
@@ -429,7 +429,7 @@ getBoundingClientRect()
 
 对于有位置重叠的元素的页面,这个过程尤其重要,因为一旦图层的合并顺序出错,将会导致元素显示异常。
 
-![composite](./composite)
+![composite](https://raw.githubusercontent.com/webfansplz/article/master/browser/composite)
 
 RenderLayers 渲染层,这是负责对应 DOM 子树。
 
