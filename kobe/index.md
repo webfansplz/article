@@ -1,4 +1,4 @@
-![4am](./images/4am.jpeg)
+![4am](https://raw.githubusercontent.com/webfansplz/article/master/kobe/images/4am.jpeg)
 
 > 你见过凌晨四点的洛杉矶吗 ？
 
@@ -18,19 +18,21 @@
 
 > 你是那个右手手腕骨折却坚持用左手训练的男人。
 
-![left-hand](./images/left-hand.jpeg)
+![left-hand](https://raw.githubusercontent.com/webfansplz/article/master/kobe/images/left-hand.jpeg)
 
 > 你是那个手指脱臼掰回去继续打比赛的男人。
 
-![finger](./images/finger.gif)
+![finger](https://raw.githubusercontent.com/webfansplz/article/master/kobe/images/finger.gif)
 
 > 你是那个跟腱断裂坚持罚球的男人。
 
-![fracture](./images/fracture.jpeg)
+![fracture](https://raw.githubusercontent.com/webfansplz/article/master/kobe/images/fracture.jpeg)
 
 我们爱你,爱你的偏执,爱你的坚韧,爱你的勤奋,也爱你的好胜心。
 
 我的青春,正式终于 2020 年 1 月 27 日。这是我这辈子最难过的凌晨 4 点。
+
+![legends](https://raw.githubusercontent.com/webfansplz/article/master/kobe/images/legends.jpeg)
 
 RIP Legend , RIP Kobe .
 
