@@ -269,6 +269,60 @@ import 'package:abc/abc' hide xxx; // 导出模块时不导出xxx
 
 ```
 
+## 类 class
+
+```dart
+//javascript
+
+class Person{
+  // 私有属性提案
+  #age=0;
+  // 构造函数及参数默认值
+  constructor(name='null仔'){
+    this.name=name;
+  }
+  // 实例方法
+  getName(){
+    console.log(this.name);
+  }
+  // 静态方法
+  static say(){
+    console.log(`hello world`);
+  }
+  // getter && setter
+  get age(){
+    return this.#age;
+  }
+  set age(value){
+    this.#age=value;
+  }
+}
+
+//dart
+
+class Person{
+  // 私有属性
+  int _age;
+  String name;
+   // 构造函数及参数默认值
+  Person({this.name='null仔'});
+   // 实例方法
+  void getName(){
+    print(this.name);
+  }
+   // 静态方法
+  static say(){
+    print("hello world");
+  }
+  // getter && setter
+  int get age =>this._age;
+  set age(int value)=>this._age=value;
+}
+
+```
+
+![fx](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/class.png)
+
 # Typescript 🆚 Dart
 
 ## 泛型
