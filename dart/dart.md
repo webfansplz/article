@@ -52,6 +52,8 @@ Android 和 Chrome OS 可能是谷歌最知名的 OS 项目,但实际上这两�
 
 近日谷歌 Fuchsia 网站上更新了一则[“Fuchsia Programming Language Policy”](https://fuchsia.googlesource.com/fuchsia/+/refs/heads/master/docs/project/policy/programming_languages.md)的文档,详细解释了 Fuchsia 项目在编程语言方面的选型考虑。据官方文档披露,C/C++、Dart、Rust、Go 语言都是 Fuchsia 开发的候选语言,除了老牌编程语言 C 和 C++ 的江湖地位稳固得到了官方开发人员的认可以外,新兴编程语言中,Dart 击败了 Rust 和 Go 语言,成为用户 UI 界面的正式官方语言。
 
+![wordclouds](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/wordclouds.png)
+
 # Javascript 🆚 Dart
 
 ## 变量声明
