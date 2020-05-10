@@ -76,6 +76,8 @@
 
 [0202 年了, Chrome DevTools 你还只会 console.log 吗 ?](https://github.com/webfansplz/article/issues/36)
 
+[「 Dart Js Ts 」给前端工程师的一张 Dart 语言入场券](https://github.com/webfansplz/article/issues/41)
+
 ## Vue
 
 [撸一个简版 vuex](https://github.com/webfansplz/article/issues/20)

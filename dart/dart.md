@@ -384,7 +384,7 @@ if (foo?.bar?.baz) {
 }
 ```
 
-Dart 本身就内置了?.运算符,我们来瞧瞧～
+Dart 提供了?.运算符,我们来瞧瞧～
 
 ```dart
 // typescript
@@ -420,7 +420,7 @@ let x = foo ?? bar()
 let x = foo !== null && foo !== void 0 ? foo : bar()
 ```
 
-Dart 本身就内置了??运算符,我们来瞧瞧～
+Dart 提供了??运算符,我们来瞧瞧～
 
 ```dart
 // typescript
