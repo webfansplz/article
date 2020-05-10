@@ -22,7 +22,7 @@ Flutter 使用 Dart 语言进行开发,小 null 在写 Flutter 的过程中发�
 
 > 2011 年 10 月 10 日的 GOTO 大会上,谷歌的两位工程师 Lars Bak (V8 JavaScript engine 项目组长..)和 Gilad Bracha (实现定制 Java/JVM 规范,JVM 规范主要贡献者..) 发布了"Dart",也验证了之前 email 传闻。Dart 是一种全新的编程语言,旨在帮助开发者构建 Web 应用程序。
 
-![2011goto](./images/2011goto.jpg)
+![2011goto](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/2011goto.jpg)
 
 对 Dart 语言开发团队有兴趣的话~可戳 👉[Dart 语言背后有哪些大牛？](https://www.infoq.cn/article/2015/04/dart-1.8-javascript)
 
@@ -32,7 +32,7 @@ Flutter 使用 Dart 语言进行开发,小 null 在写 Flutter 的过程中发�
 
 就这样,Dart 还在 2018 年 "荣获 20 大糟糕语言榜首",总结 「 Javascript 很"忙",Dart 很"惨" 」。
 
-![2018-worst-lang](./images/2018-worst-lang.png)
+![2018-worst-lang](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/2018-worst-lang.png)
 
 ## Dart 2.0 《Announcing Dart 2 Stable and the Dart Web Platform》
 
@@ -76,11 +76,11 @@ Dart 是类型安全的,所以当你使用 var 关键字定义变量时,本质�
 
 在 Dart 中,声明一个未初始化的变量,变量的类型可以更改,它的初始值是 null。
 
-![variable](./images/variable1.png)
+![variable](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/variable1.png)
 
 在 Dart 中,声明一个初始化的变量,变量类型不能再更改 。
 
-![variable](./images/variable2.png)
+![variable](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/variable2.png)
 
 ## 常量声明
 
@@ -98,7 +98,7 @@ const name = 'null仔';
 
 Dart 中,还可以使用 final 定义常量,由于本文主要将与 Javascript 的相似点,这里就不细说了。
 
-![constant](./images/constant.png)
+![constant](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/constant.png)
 
 ## 模版字符串
 
@@ -120,7 +120,7 @@ const word = 'My name is $name';
 
 如果表达式的结果是一个对象,那么会调用对象的 toString()方法。
 
-![template-string](./images/template-string.png)
+![template-string](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/template-string.png)
 
 ## 箭头函数
 
@@ -158,7 +158,7 @@ const word = 'My name is $name';
 
 Dart v2.3 引入了 Spread Operator,我们在 Javascript 中很喜欢用的神器,在 Dart 中也可以用啦～嗯,真香~
 
-![spread](./images/spread.png)
+![spread](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/spread.png)
 
 ## 参数默认值与可选参数
 
@@ -180,7 +180,7 @@ Dart v2.3 引入了 Spread Operator,我们在 Javascript 中很喜欢用的神�
 
 与 Javascript 相似,Dart 支持函数参数默认值与可选参数,Get it ~
 
-![default](./images/default.png)
+![default](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/default.png)
 
 ## async/await 函数
 
@@ -210,7 +210,7 @@ Dart v2.3 引入了 Spread Operator,我们在 Javascript 中很喜欢用的神�
 
 Javascript async 函数返回的是 Promise 对象,而 Dart async 函数返回的是 Future 对象～
 
-![async](./images/async.png)
+![async](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/async.png)
 
 ## 级联函数(链式调用)
 
@@ -237,7 +237,7 @@ new Promise((r) => {
 
 在 Javascript 中 我们一般通过手动 "return this" 来实现链式调用,而 Dart 提供了 Cascade (级联运算符) .. 帮我们实现链式调用～ 真香！
 
-![Cascade](./images/cascade.png)
+![Cascade](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/cascade.png)
 
 ## 模块导入和导出 import
 
@@ -298,7 +298,7 @@ Typescript 与 Dart 中都存在泛型,下面我们以一个简单的泛型函�
 
 ```
 
-![fx](./images/fx.png)
+![fx](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/fx.png)
 
 ## Typescript Type Assertion 🆚 Dart as 运算符
 
@@ -308,9 +308,9 @@ Typescript 与 Dart 中都存在泛型,下面我们以一个简单的泛型函�
 值 as 类型
 ```
 
-![as-dart](./images/as-dart.png)
+![as-dart](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/as-dart.png)
 
-![as](./images/as.png)
+![as](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/as.png)
 
 ## Typescript Optional Chaining 🆚 Dart ?. 运算符
 
@@ -348,7 +348,7 @@ print(foo?.bar?.baz);
 
 ```
 
-![optional-chaining](./images/optional-chaining.png)
+![optional-chaining](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/optional-chaining.png)
 
 ## Typescript Nullish Coalescing 🆚 Dart ?? 运算符
 
@@ -393,8 +393,24 @@ Dart 本身就内置了??运算符,我们来瞧瞧～
   print(age); // 18
 ```
 
-![nullish coalescing](./images/nullish-coalescing.png)
+![nullish coalescing](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/nullish-coalescing.png)
 
-# 结语
+# 参考
 
-https://www.jianshu.com/p/c939a613dc4f
+[Dart 语言的前世今生](https://www.jianshu.com/p/c939a613dc4f)
+
+# 后记
+
+> 如果你和我一样喜欢前端,也爱动手折腾,欢迎关注我一起玩耍啊～ ❤️
+
+[github 地址,欢迎 follow 哦～](https://github.com/webfansplz)
+
+## 博客
+
+[我的博客,点 star,不迷路～](https://github.com/webfansplz/article)
+
+## 公众号
+
+前端时刻
+
+![前端时刻](https://raw.githubusercontent.com/webfansplz/article/master/qrcode.gif)
