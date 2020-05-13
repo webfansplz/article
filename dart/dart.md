@@ -8,7 +8,9 @@
 
 Flutter 使用 Dart 语言进行开发,小 null 在写 Flutter 的过程中发现 Dart 和 Javascript/Typescript 有些相似之处～
 
-本文分享一些相似之处,希望能帮助到打算上车的你～
+![wordclouds](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/wordclouds.png)
+
+本文分享上图中这些相似之处,希望能帮助到打算上车的你～
 
 **You might already know Dart.** - from [10 good reasons to learn Dart](https://medium.com/hackernoon/10-good-reasons-why-you-should-learn-dart-4b257708a332)
 
@@ -51,8 +53,6 @@ Flutter 是谷歌开源的移动应用开发 SDK,使用 Flutter 可以直接开�
 Android 和 Chrome OS 可能是谷歌最知名的 OS 项目,但实际上这两年曝光量逐渐增大的是谷歌正在开发的第三个操作系统——Fuchsia。Fuchsia 是一个开源项目,类似于 AOSP（Android 开放源代码项目）,但 Fuchsia 可以运行各种设备,从智能家居设备到笔记本电脑和手机等等。它也被认为是建立在一个谷歌构建的名为“zircon”的全新内核之上,而不是构成 Android 和 Chrome 操作系统基础的 Linux 内核。
 
 近日谷歌 Fuchsia 网站上更新了一则[“Fuchsia Programming Language Policy”](https://fuchsia.googlesource.com/fuchsia/+/refs/heads/master/docs/project/policy/programming_languages.md)的文档,详细解释了 Fuchsia 项目在编程语言方面的选型考虑。据官方文档披露,C/C++、Dart、Rust、Go 语言都是 Fuchsia 开发的候选语言,除了老牌编程语言 C 和 C++ 的江湖地位稳固得到了官方开发人员的认可以外,新兴编程语言中,Dart 击败了 Rust 和 Go 语言,成为用户 UI 界面的正式官方语言。
-
-![wordclouds](https://raw.githubusercontent.com/webfansplz/article/master/dart/images/wordclouds.png)
 
 # Javascript 🆚 Dart
 
