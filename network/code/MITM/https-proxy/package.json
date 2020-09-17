@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-forge": "^0.9.1",
+    "node-forge": "^0.10.0",
     "shelljs": "^0.8.3"
   }
 }
